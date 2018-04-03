@@ -1,0 +1,1 @@
+export { default } from 'lemonade-datavis/components/visualizations/area-chart';
