@@ -1,0 +1,1 @@
+export { default } from 'lemonade-datavis/components/dashboards/vis-wrapper';
