@@ -16,13 +16,15 @@ module.exports = {
     app.import('vendor/gViz/libs/leaflet/leaflet.js');
     app.import('vendor/gViz/libs/leaflet-heat/leaflet-heat.js');
 
-    // Lodash for Gridstack
-    app.import('vendor/gViz/libs/lodash/lodash.min.js');
+    app.import('node_modules/lodash/lodash.js'); // gridstack requirements
+    app.import('node_modules/jquery-ui-dist/jquery-ui.css'); // gridstack requirements
+    app.import('node_modules/jquery-ui-dist/jquery-ui.theme.css'); // gridstack requirements
+    app.import('node_modules/jquery-ui-dist/jquery-ui.structure.css'); // gridstack requirements
+    app.import('node_modules/jquery-ui-dist/jquery-ui.js'); // gridstack requirements
+    app.import('node_modules/gridstack/dist/gridstack.css');
+    app.import('node_modules/gridstack/dist/gridstack-extra.css');
+    app.import('node_modules/gridstack/dist/gridstack.all.js');
 
-    // Gridstack for flex layout
-    app.import('vendor/gViz/libs/gridstack/gridstack.css');
-    app.import('vendor/gViz/libs/gridstack/gridstack.js');
-    app.import('vendor/gViz/libs/gridstack/gridstack.jQueryUI.js');
 
     app.import("vendor/gViz/_init.js");
     app.import("vendor/gViz/initializers/tooltipster.js");

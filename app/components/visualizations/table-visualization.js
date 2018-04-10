@@ -1,1 +1,1 @@
-export { default } from 'lemonade-datavis/templates/components/visualizations/table-visualization';
+export { default } from 'lemonade-datavis/components/visualizations/table-visualization';

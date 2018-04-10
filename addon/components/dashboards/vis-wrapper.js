@@ -2,9 +2,11 @@
 import { empty } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import Component from '@ember/component';
+import layout from '../../templates/components/dashboards/vis-wrapper';
 import $ from 'jquery';
 
 export default Component.extend({
+  layout,
 
   // Set html elements
   tagName: "div",
