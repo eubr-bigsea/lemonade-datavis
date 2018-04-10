@@ -9,7 +9,7 @@ export default Component.extend({
   classNames: ["gViz-wrapper"],
 
   // Draw Chart
-  didInsertElement: function(){
+  didRender: function(){
 
     this.set('_var',
       gViz.vis.pieChart()

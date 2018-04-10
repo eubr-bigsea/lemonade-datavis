@@ -1,1 +1,1 @@
-export { default } from 'lemonade-datavis/components/visualizations/vis-card';
+export { default } from 'gviz/templates/components/visualizations/vis-card';

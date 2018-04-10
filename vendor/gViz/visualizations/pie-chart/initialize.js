@@ -30,7 +30,7 @@ gViz.vis.pieChart.initialize = function () {
 
       switch (step) {
 
-          // Build entire visualizations
+        // Build entire visualizations
         case 'run':
 
           // Initialize variables
@@ -44,7 +44,7 @@ gViz.vis.pieChart.initialize = function () {
           // Id for shadows
           _var.shadowId = `vis-shadow-${Math.floor(Math.random() * ((1000000000 - 5) + 1)) + 5}`
 
-          // Get container
+           // Get container
           _var.container = {
             selector: container,
             d3: d3.select(container),
