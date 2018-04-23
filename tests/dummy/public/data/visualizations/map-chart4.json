@@ -1,0 +1,50 @@
+{
+  "job_id": 148,
+  "task_id": "7e7b8d7e-1c98-4978-9f99-4cb18afd4aae",
+  "title": "Teste com Mapa",
+  "data": [
+    {
+      "cor": "green",
+      "id": "MG",
+      "value": 2
+    },
+    {
+      "cor": "red",
+      "id": "SP",
+      "value": 1
+    },
+    {
+      "cor": "blue",
+      "id": "RJ",
+      "value": 3
+    },
+    {
+      "cor": "yellow",
+      "id": "ES",
+      "value": 4
+    }
+  ],
+  "tooltip": {
+    "body": [
+      "<span class='metric'>{{x}}</span><span class='number'>{{y}}</span>"
+    ],
+    "title": [
+      "{{name}}"
+    ]
+  },
+  "mode": {
+    "polygon": true
+  },
+  "geojson": {
+    "url": "http://beta.ctweb.inweb.org.br/publico/Brasil_Estados.p4.simpl.json"
+  },
+  "type": {
+    "icon": "fa-map-marker",
+    "id": 88,
+    "name": "map-chart"
+  },
+  "legend": {
+    "text": "{{name}}",
+    "isVisible": true
+  }
+}
