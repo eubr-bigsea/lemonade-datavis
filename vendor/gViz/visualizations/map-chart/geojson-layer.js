@@ -21,20 +21,59 @@ gViz.vis.map.geoJsonLayer = function () {
     if (validate(step)) {
 
       switch (step) {
-
         case 'run':
+          var extent = d3.extent(_var.data.data, function(d) { return +d.value; });
 
-          if(_var.mode["geoJSON"]) {
-            // Creates layer if it does not exist
-            _var.geoJsonLayer = _var.geoJsonLayer ? _var.geoJsonLayer : new L.FeatureGroup().addTo(_var.map);
-            _var.geoJsonLayer.clearLayers();
+          // domain steps
+          var step = (extent[1] - extent[0])/(_var.heatColors.length - 1);
+          var domain = [];
 
-            // Adds data to map
-            L.geoJson(_var.data.data).addTo(_var.geoJsonLayer);
+          for(var i = 0; i < _var.heatColors.length; i++) {
+            if(i === 0) { domain[i] = extent[0]; }
 
-            // Fits layer
-            _var.map.fitBounds(_var.geoJsonLayer.getBounds());
+            else {
+              domain[i] = domain[i - 1] + step;
+            }
           }
+
+          var colorScale = d3.scaleLinear()
+            .domain(domain)
+            .range(_var.heatColors);
+
+          // these won't change. We don't need to reassign them
+          var getColor = getColor || function(id) {
+            var obj = _var.data.data.find(function(d) { return d.id === id; })
+
+            if(obj) {
+              return colorScale(+obj.value);
+            }
+
+            else {
+              return '#c1c1c1';
+            }
+          };
+
+          // these won't change. We don't need to reassign them
+          var style = style || function(feature) {
+            return {
+              fillColor: getColor(feature.properties.id),
+              weight: 2,
+              opacity: 1,
+              color: 'black',
+              dashArray: '3',
+              fillOpacity: 0.7
+            };
+          };
+
+          // Creates layer if it does not exist
+          _var.geoJsonLayer = _var.geoJsonLayer ? _var.geoJsonLayer : new L.FeatureGroup().addTo(_var.map);
+          _var.geoJsonLayer.clearLayers();
+
+          // Appends geojson layer
+          L.geoJson(_var.data.geojson, { style: style }).addTo(_var.geoJsonLayer);
+
+          // Fits layer
+          _var.map.fitBounds(_var.geoJsonLayer.getBounds());
 
           break;
       }

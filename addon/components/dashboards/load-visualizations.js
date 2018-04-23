@@ -79,7 +79,7 @@ export default Component.extend({
       var index = self.get('visualizations').map((d,i) => { return { index: i, id: `${d.id}` } }).find(d => `${d.id}` === `${dataVizId}`).index;
 
       // Get obj
-      var obj = self.get('visualizations').objectAt(index);
+      var obj = self.get(`visualizations.${index}`);
 
       // Update property
       set(obj, 'resizeIndex', obj.resizeIndex+1);
