@@ -2,7 +2,6 @@
 
 // Initialize the visualization class
 gViz.vis.map = function () {
-  "use strict";
 
   // Auxiliar Functions
   var components = {
@@ -27,20 +26,15 @@ gViz.vis.map = function () {
   var _id         = `vis-map-chart-${Math.floor(Math.random() * ((1000000000 - 5) + 1)) + 5}`;
   var _var        = null;
   var action      = 'build';
-  var animation   = 900;
   var container   = null;
-  var colors      = { main: gViz.shared.helpers.colors.main, d3: d3.scaleOrdinal(d3.schemeCategory10) };
   var data        = [];
-  var height      = null;
-  var margin      = { top: 10, right: 10, bottom: 10, left: 10};
-  var mode        = { heat: true };
-  var width       = null;
   var tile        = "default";
   var startPoint  = null;
   var zoom        = null;
 
   // Validate attributes
   var validate = function (step) {
+    console.log(step)
     switch (step) {
       case 'build':         return (container != null) && (d3.selectAll(container).size() !== 0 || d3.select(container).size() !== 0);
       case 'initialize':    return true;
@@ -70,18 +64,19 @@ gViz.vis.map = function () {
         // Build entire visualizations
         case 'build':
 
+          console.log('ROLA')
           main('initialize');
-          main('style');
-          main('tiles');
-          main('renderMap');
-          main('barScale');
-          main('heatLayer');
-          main('geoJsonLayer');
-          main('create');
-          main('elements');
-          main('zoom');
-          main('legend');
-          main('misc');
+          // main('style');
+          // main('tiles');
+          // main('renderMap');
+          // main('barScale');
+          // main('heatLayer');
+          // main('geoJsonLayer');
+          // main('create');
+          // main('elements');
+          // main('zoom');
+          // main('legend');
+          // main('misc');
           break;
 
 
@@ -94,14 +89,8 @@ gViz.vis.map = function () {
           _var = components.initialize()
             ._var(_var)
             ._id((_var._id != null) ? _var._id : _id)
-            .animation(animation)
             .container(container)
-            .colors(colors)
             .data(data)
-            .height(height)
-            .margin(margin)
-            .mode(mode)
-            .width(width)
             .tile(tile)
             .startPoint(startPoint)
             .zoom(zoom)
@@ -220,7 +209,7 @@ gViz.vis.map = function () {
   };
 
   // Expose global variables
-  ['_id', '_var', 'action', 'animation','container', 'colors', 'data', 'height', 'margin','mode','width', 'tile', 'startPoint', 'zoom'].forEach(function (key) {
+  ['_id', '_var', 'action', 'container', 'data', 'tile', 'startPoint', 'zoom'].forEach(function (key) {
 
     // Attach variables to validation function
     validate[key] = function (_) {
@@ -241,25 +230,8 @@ gViz.vis.map = function () {
     };
   });
 
-  // Secondary functions
-  main.build = function (_) {
-    return main("build");
-  };
-  main.initialize = function (_) {
-    return main("initialize");
-  };
-  main.create = function (_) {
-    return main("create");
-  };
-  main.setup = function (_) {
-    return main("setup");
-  };
-  main.draw = function (_) {
-    return main("draw");
-  };
-
   // Execute the specific called function
-  main.run = function (_) {
+  main.build = function (_) {
     return main(_);
   };
 

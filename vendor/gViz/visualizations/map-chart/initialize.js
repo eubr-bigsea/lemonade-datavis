@@ -1,19 +1,11 @@
 'use strict';
 
 gViz.vis.map.initialize = function() {
-  "use strict";
-
   // Get attributes values
   var _id         = null;
   var _var        = null;
-  var animation   = 900;
   var container   = null;
-  var colors      = { main: gViz.shared.helpers.colors.main, aux: gViz.shared.helpers.colors.aux };
   var data        = [];
-  var height      = null;
-  var margin      = { top: 10, right: 10, bottom: 10, left: 10 };
-  var mode        = { heat: true };
-  var width       = null;
   var tile        = "default";
   var startPoint  = null;
   var zoom        = null;
@@ -28,6 +20,8 @@ gViz.vis.map.initialize = function() {
 
   // Main function
   var main = function(step) {
+
+    console.log('Rola')
 
     // Validate attributes if necessary
     if (validate(step)) {
@@ -108,8 +102,7 @@ gViz.vis.map.initialize = function() {
   };
 
   // Expose global variables
-  ['_id','_var','animation','container','colors','data','height','margin','mode','width', 'tile', 'startPoint', 'zoom'].forEach(function(key) {
-
+  ['_id','_var','container','data', 'tile', 'startPoint', 'zoom'].forEach(function(key) {
     // Attach variables to validation function
     validate[key] = function(_) {
       if (!arguments.length) { eval(`return ${key}`); }
