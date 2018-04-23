@@ -1,0 +1,23 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.ember-view {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+@mixin viz-container($height, $width) {
+  display: block;
+  border: solid 1px lightgray;
+  margin-left: auto;
+  margin-right: auto;
+  height: $height;
+  width: $width;
+}
+
+.map-container {
+  @include viz-container(500px, 600px);
+}
