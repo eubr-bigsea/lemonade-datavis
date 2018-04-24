@@ -13,7 +13,7 @@ export default Route.extend({
 
   model(params){
     const path = '/data/visualizations';
-    const dataUrl = params['data'] ? `${path}/${params['data']}` : `${path}/pie-chart.json`;
+    const dataUrl = params['data'] ? `${path}/${params['data']}` : `${path}/map-chart.json`;
     return $.ajax({
       url: dataUrl,
       type: 'GET'

@@ -1,101 +1,68 @@
 'use strict';
 
 gViz.vis.map.initialize = function() {
+
   // Get attributes values
   var _id         = null;
   var _var        = null;
   var container   = null;
   var data        = [];
   var tile        = "default";
-  var startPoint  = null;
+  var startPoint  = [0, 0];
   var zoom        = null;
-
-  // Validate attributes
-  var validate = function(step) {
-    switch (step) {
-      case 'run': return true;
-      default: return false;
-    }
-  };
+  var margin      = { top: 20, right: 20, bottom: 20, left: 20 };
 
   // Main function
   var main = function(step) {
 
-    console.log('Rola')
+    switch (step) {
+      // Build entire visualizations
+      case 'run':
 
-    // Validate attributes if necessary
-    if (validate(step)) {
+        // Initialize variables
+        if (!_var) { _var = {}; }
+        _var._id = _id;
 
-      switch (step) {
+        // Get container
+        _var.container = {
+          selector: container,
+          d3: d3.select(container),
+          el: d3.select(container).node(),
+          clientRect: d3.select(container).node().getBoundingClientRect()
+        };
 
-        // Build entire visualizations
-        case 'run':
+        // Get data
+        _var.data = data;
+        _var.margin = margin;
 
-          // Initialize variables
-          if (!_var) { _var = {}; }
-          _var._id = _id;
-          _var.animation = animation;
-          _var.colors = colors;
-          _var.margin = margin;
-          _var.mode  = data.mode || mode;
+        // Define height and width
+        _var.height = _var.container.clientRect.height;
+        _var.width = _var.container.clientRect.width;
 
-          // Id for shadows
-          _var.shadowId = `vis-shadow-${Math.floor(Math.random() * ((1000000000 - 5) + 1)) + 5}`
+        // Set attribute _id to container
+        _var.container.d3.attr('data-vis-id', _var._id);
 
-          // Resets map wrapper height, so the container value is updated
-          // correctly
-          if(_var.mapWrapper) { _var.mapWrapper.style("height", "0px"); }
+        _var.headerWrapper = _var.container.d3.selectAll(".header-wrapper").data(["header-wrapper"]);
+        _var.headerWrapper.exit().remove();
+        _var.headerWrapper = _var.headerWrapper.enter().append("div").attr("class", "header-wrapper").merge(_var.headerWrapper);
 
-          // Get container
-          _var.container = {
-            selector: container,
-            d3: d3.select(container),
-            el: d3.select(container).node(),
-            clientRect: d3.select(container).node().getBoundingClientRect()
-          };
 
-          // Get data
-          _var.data = data;
+        // NO DATA AVAILABLE
+        if (_var.data.length === 0) {
+          var styleStr = `line-height: ${_var.container.clientRect.height}px; text-align: center`;
+          _var.container.d3.html(`<h5 style='${styleStr}'>NO DATA AVAILABLE</h5>`);
+        }
+        else {
+          _var.container.d3.selectAll("h5").remove();
+        }
 
-          // Set zoom transform
-          if(_var.zoomTransform == null) { _var.zoomTransform = { k: 1, x: _var.margin.left, y: _var.margin.right }; }
+        // Tile to be loaded
+        _var.tile = tile;
 
-          // Define height and width
-          _var.height = ((height != null) ? height : _var.container.clientRect.height) - (_var.margin.top + _var.margin.bottom);
-          _var.width = ((width != null) ? width : _var.container.clientRect.width) - (_var.margin.left + _var.margin.right);
+        // Map Mode
+        _var.mode = _var.data.mode;
 
-          // Set attribute _id to container
-          _var.container.d3.attr('data-vis-id', _var._id);
-
-          // NO DATA AVAILABLE
-          if (_var.data.length === 0) {
-            _var.container.d3.html("<h5 style='line-height: "+(_var.container.clientRect.height)+"px; text-align: center;'>NO DATA AVAILABLE</h5>");
-          } else { _var.container.d3.selectAll("h5").remove(); }
-
-          _var.headerWrapper = _var.container.d3.selectAll(".header-wrapper").data(["header-wrapper"]);
-          _var.headerWrapper.exit().remove();
-          _var.headerWrapper = _var.headerWrapper.enter().append("div").attr("class", "header-wrapper").merge(_var.headerWrapper);
-
-          _var.mapWrapper = _var.container.d3.selectAll(".map-wrapper").data(["map-wrapper"]);
-          _var.mapWrapper.exit().remove();
-          _var.mapWrapper = _var.mapWrapper.enter().append("div").attr("class", "map-wrapper").merge(_var.mapWrapper);
-
-          _var.mapWrapper
-            .attr("class", "map-wrapper")
-            .style("height", (_var.height - 70) + "px")
-            .style("margin-top", _var.margin.top);
-
-          // Tile to be loaded
-          _var.tile = tile;
-
-          // Loading point
-          _var.startPoint = startPoint;
-
-          // Map Zoom on init
-          _var.zoom = zoom;
-
-          break;
-      }
+      break;
     }
 
     return _var;
@@ -103,17 +70,12 @@ gViz.vis.map.initialize = function() {
 
   // Expose global variables
   ['_id','_var','container','data', 'tile', 'startPoint', 'zoom'].forEach(function(key) {
-    // Attach variables to validation function
-    validate[key] = function(_) {
-      if (!arguments.length) { eval(`return ${key}`); }
-      eval(`${key} = _`);
-      return validate;
-    };
-
     // Attach variables to main function
     return main[key] = function(_) {
-      if (!arguments.length) { eval(`return ${key}`); }
-      eval(`${key} = _`);
+      if (arguments.length) {
+        eval(`${key} = _`);
+      }
+
       return main;
     };
   });

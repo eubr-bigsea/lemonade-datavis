@@ -2,7 +2,6 @@
 
 // Initialize the visualization class
 gViz.vis.map = function () {
-
   // Auxiliar Functions
   var components = {
     initialize:     gViz.vis.map.initialize,
@@ -29,12 +28,9 @@ gViz.vis.map = function () {
   var container   = null;
   var data        = [];
   var tile        = "default";
-  var startPoint  = null;
-  var zoom        = null;
 
   // Validate attributes
   var validate = function (step) {
-    console.log(step)
     switch (step) {
       case 'build':         return (container != null) && (d3.selectAll(container).size() !== 0 || d3.select(container).size() !== 0);
       case 'initialize':    return true;
@@ -63,12 +59,11 @@ gViz.vis.map = function () {
 
         // Build entire visualizations
         case 'build':
-
-          console.log('ROLA')
           main('initialize');
-          // main('style');
-          // main('tiles');
-          // main('renderMap');
+          main('misc');
+          main('create');
+          main('tiles');
+          main('renderMap');
           // main('barScale');
           // main('heatLayer');
           // main('geoJsonLayer');
@@ -76,7 +71,6 @@ gViz.vis.map = function () {
           // main('elements');
           // main('zoom');
           // main('legend');
-          // main('misc');
           break;
 
 
@@ -92,8 +86,6 @@ gViz.vis.map = function () {
             .container(container)
             .data(data)
             .tile(tile)
-            .startPoint(startPoint)
-            .zoom(zoom)
             .run();
 
           break;
@@ -200,6 +192,16 @@ gViz.vis.map = function () {
             .components(components)
             .run();
           break;
+
+        // Show legend
+        case 'create':
+
+          // Running
+          _var = components.create()
+            ._var(_var)
+            .components(components)
+            .run();
+          break;
       }
     }
 
@@ -210,7 +212,6 @@ gViz.vis.map = function () {
 
   // Expose global variables
   ['_id', '_var', 'action', 'container', 'data', 'tile', 'startPoint', 'zoom'].forEach(function (key) {
-
     // Attach variables to validation function
     validate[key] = function (_) {
       if (!arguments.length) {
@@ -232,7 +233,7 @@ gViz.vis.map = function () {
 
   // Execute the specific called function
   main.build = function (_) {
-    return main(_);
+    return main("build");
   };
 
   return main;

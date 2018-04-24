@@ -1,17 +1,14 @@
 .scale-wrapper {
-  .legend-left {
-
-  }
+  $rect-width: 100px;
 
   .scale-rect {
     margin-left: 5px;
     margin-right: 5px;
-    margin-top: 8px;
+    margin-top: 6px;
   }
 
   .legend-right {
-    margin-left: 30px;
-
+    margin-left: calc(#{$rect-width} + 10px);
   }
 }
 

@@ -1,8 +1,6 @@
 {
   "title": "Map Leaflet Heat",
-  "mode": {
-    "bars": true
-  },
+  "mode": "heatmap",
   "tooltip": {
     "title": [
       "{{name}}"
@@ -11,38 +9,7 @@
       "<span class='metric'># Accounts</span><span class='number'>{{value}}</span>"
     ]
   },
-  "toggle": {
-    "isVisible": true
-  },
-  "legend": {
-    "isVisible": true
-  },
-  "bars": {
-    "mapColor": "#8BC3D2",
-    "mapStrokeColor": "#FFF",
-    "mapOpacity": "0.7",
-    "barWidth": "2",
-    "barMaxHeight": 40,
-    "bottomBarHeight": 4,
-    "bottomBarColor": "#596A6D",
-    "barColor": "#428DA1",
-    "prefix": "$",
-    "suffix": "",
-    "format": "",
-    "type": "number"
-  },
-  "heat": {
-    "colors": [
-      "#47d8c7",
-      "#e3c170",
-      "#fe492b"
-    ],
-    "shapeId": "abbr",
-    "prefix": "",
-    "suffix": "%",
-    "format": "locale",
-    "type": "number"
-  },
+  "legend": true,
   "data": [
     {
       "id": "store-0",
