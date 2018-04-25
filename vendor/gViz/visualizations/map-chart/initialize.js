@@ -62,6 +62,8 @@ gViz.vis.map.initialize = function() {
         // Map Mode
         _var.mode = _var.data.mode;
 
+        _var.heatColors = ['blue', 'cyan', 'yellow', 'orange', 'red'];
+
       break;
     }
 

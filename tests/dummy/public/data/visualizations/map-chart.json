@@ -1,6 +1,6 @@
 {
   "title": "Map Leaflet Heat",
-  "mode": "heatmap",
+  "mode": "point",
   "tooltip": {
     "title": [
       "{{name}}"

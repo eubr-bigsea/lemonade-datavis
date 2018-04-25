@@ -6,14 +6,7 @@ module.exports = {
     this._super(...arguments);
     this._super.included.apply(this, arguments);
 
-    app.import('vendor/gViz/libs/tooltipster/tooltipster.bundle.min.js');
-    app.import('vendor/gViz/libs/tooltipster/tooltipster.bundle.min.css');
-
     app.import('vendor/gViz/libs/d3.v4/d3.v4.min.js');
-    app.import('vendor/gViz/libs/d3.position/d3.position.js');
-    app.import('vendor/gViz/libs/latinise/latinise_compact.js');
-
-    app.import('vendor/gViz/libs/leaflet/leaflet.js');
     app.import('vendor/gViz/libs/leaflet-heat/leaflet-heat.js');
 
     app.import('node_modules/lodash/lodash.js'); // gridstack requirements
@@ -25,10 +18,7 @@ module.exports = {
     app.import('node_modules/gridstack/dist/gridstack-extra.css');
     app.import('node_modules/gridstack/dist/gridstack.all.js');
 
-
     app.import("vendor/gViz/_init.js");
-    app.import("vendor/gViz/initializers/tooltipster.js");
-    app.import("vendor/gViz/initializers/libs.js");
     app.import("vendor/gViz/shared/_init.js");
     app.import("vendor/gViz/shared/helpers/colors.js");
     app.import("vendor/gViz/shared/helpers/date.js");
@@ -43,39 +33,6 @@ module.exports = {
     app.import("vendor/gViz/shared/visual-components/shadow.js");
     app.import("vendor/gViz/shared/visual-components/tooltip.js");
     app.import("vendor/gViz/shared/visual-components/tooltip-table.js");
-    app.import("vendor/gViz/visualizations/matrix-chart/_init.js");
-    app.import("vendor/gViz/visualizations/matrix-chart/initialize.js");
-    app.import("vendor/gViz/visualizations/matrix-chart/create.js");
-    app.import("vendor/gViz/visualizations/matrix-chart/scales.js");
-    app.import("vendor/gViz/visualizations/matrix-chart/setup.js");
-    app.import("vendor/gViz/visualizations/matrix-chart/draw.js");
-    app.import("vendor/gViz/visualizations/matrix-chart/legend.js");
-    app.import("vendor/gViz/visualizations/matrix-chart/sort.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/_init.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/initialize.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/bind.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/brush.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/create.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/drag.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/setup.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/tooltip.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/zoom.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/search.js");
-    app.import("vendor/gViz/visualizations/graph-canvas/label.js");
-    app.import("vendor/gViz/visualizations/wordtree/_init.js");
-    app.import("vendor/gViz/visualizations/wordtree/initialize.js");
-    app.import("vendor/gViz/visualizations/wordtree/helpers.js");
-    app.import("vendor/gViz/visualizations/wordtree/data_.js");
-    app.import("vendor/gViz/visualizations/wordtree/create.js");
-    app.import("vendor/gViz/visualizations/wordtree/setup.js");
-    app.import("vendor/gViz/visualizations/histogram/_init.js");
-    app.import("vendor/gViz/visualizations/histogram/initialize.js");
-    app.import("vendor/gViz/visualizations/histogram/create.js");
-    app.import("vendor/gViz/visualizations/histogram/x-scale.js");
-    app.import("vendor/gViz/visualizations/histogram/y-scale.js");
-    app.import("vendor/gViz/visualizations/histogram/axis.js");
-    app.import("vendor/gViz/visualizations/histogram/elements.js");
-    app.import("vendor/gViz/visualizations/histogram/parse.js");
     app.import("vendor/gViz/visualizations/donut-chart/_init.js");
     app.import("vendor/gViz/visualizations/donut-chart/initialize.js");
     app.import("vendor/gViz/visualizations/donut-chart/create.js");
@@ -106,17 +63,11 @@ module.exports = {
     app.import("vendor/gViz/visualizations/line-chart/misc.js");
     app.import("vendor/gViz/visualizations/map-chart/_init.js");
     app.import("vendor/gViz/visualizations/map-chart/initialize.js");
-    app.import("vendor/gViz/visualizations/map-chart/bar-scale.js");
     app.import("vendor/gViz/visualizations/map-chart/create.js");
-    app.import("vendor/gViz/visualizations/map-chart/elements.js");
-    app.import("vendor/gViz/visualizations/map-chart/events.js");
     app.import("vendor/gViz/visualizations/map-chart/heat-layer.js");
-    app.import("vendor/gViz/visualizations/map-chart/legend.js");
     app.import("vendor/gViz/visualizations/map-chart/render-map.js");
     app.import("vendor/gViz/visualizations/map-chart/geojson-layer.js");
-    app.import("vendor/gViz/visualizations/map-chart/style.js");
     app.import("vendor/gViz/visualizations/map-chart/tiles.js");
-    app.import("vendor/gViz/visualizations/map-chart/zoom.js");
     app.import("vendor/gViz/visualizations/map-chart/misc.js");
     app.import("vendor/gViz/visualizations/pie-chart/_init.js");
     app.import("vendor/gViz/visualizations/pie-chart/initialize.js");

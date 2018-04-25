@@ -5,40 +5,28 @@ gViz.vis.map.heatLayer = function () {
   // Get attributes values
   var _var = undefined;
 
-  // Validate attributes
-  var validate = function (step) {
-
-    switch (step) {
-      case 'run': return true;
-      default: return false;
-    }
-  };
-
   // Main function
   var main = function (step) {
-
-    // Validate attributes if necessary
-    if (validate(step)) {
 
       switch (step) {
 
         case 'run':
 
-          // default values
-          _var.heatColors = _var.heatColors ? _var.heatColors : ["#bbb","#444"];
+          var points = _var.data.data.map(function(d) { return [d["lat"], d["lon"]]; });
+          var topRight    = { "lat": -999, "lon": -999  };
+          var bottomLeft  = { "lat": 999, "lon": 999  };
 
-          if(_var.mode["heat"]) {
-            // Map heat colors entry
-            if(_var.data.heat == null || _var.data.heat.colors == null || _var.data.heat.colors.length === 0) { _var.heatColors = ["#bbb","#444"]; }
-            else {
+          points.forEach(function(point)  {
+            if(point[0] > topRight["lat"]) { topRight["lat"] = point[0];  }
+            if(point[1] > topRight["lon"]) { topRight["lon"] = point[1];  }
 
-              // Map data for d3 color
-              var colors = _var.data.heat.colors.map(function(d) { return d3.color(d); }).filter(function(d) { return d != null; });
+            if(point[0] < bottomLeft["lat"]) { bottomLeft["lat"] = point[0];  }
+            if(point[1] < bottomLeft["lon"]) { bottomLeft["lon"] = point[1];  }
+          });
 
-              if(colors.length === 1) { _var.heatColors = [colors[0], colors[0].darker(3)]; }
-              if(colors.length > 1) { _var.heatColors = colors; }
-            }
+          _var.dataBounds = L.latLngBounds(topRight, bottomLeft);
 
+          if(_var.mode === 'heatmap') {
             // Initialize scale
             _var.heatScale = d3.scaleLinear().range(_var.heatColors);
 
@@ -47,8 +35,8 @@ gViz.vis.map.heatLayer = function () {
 
             // Define aux variables
             var min = null,
-                max = null,
-                diff = null;
+              max = null,
+              diff = null;
 
             // Get bounds
             var data = _var.data.data;
@@ -82,14 +70,13 @@ gViz.vis.map.heatLayer = function () {
               _var.heatBounds.push(current);
             }
 
-            // Set x domain
-            // _var.heatBounds = [min, max];
             _var.heatScale.domain(_var.heatBounds);
 
-            // Set format
-            _var.heatFormat = gViz.shared.helpers.number.parseFormat(_var.data == null ? null : _var.data.heat);
             // Creates layer if it does not exist
-            _var.heatLayer = L.layerGroup().addTo(_var.map);
+            if(!_var.heatLayer) {
+              _var.heatLayer = L.featureGroup().addTo(_var.map);
+            }
+
             _var.heatLayer.clearLayers();
 
             var gradient = {
@@ -106,35 +93,37 @@ gViz.vis.map.heatLayer = function () {
               1.0: _var.heatScale(1.0),
             };
 
-            var points = _var.data.data.map(function(d) { return [d["lat"], d["lon"]]; });
-
-            _var.heat = L.heatLayer(points, {
-              gradient: gradient,
-              minOpacity: 0.25,
-            });
+            _var.heat = L.heatLayer(points)
+            //   gradient: gradient,
+            //   minOpacity: 0.25,
+            // });
 
             _var.heatLayer.addLayer(_var.heat);
           }
 
+          else if(_var.mode === 'point') {
+            if(!_var.pointsLayer) {
+              _var.pointsLayer = L.featureGroup().addTo(_var.map);
+            }
+
+            _var.pointsLayer.clearLayers();
+
+            points.forEach(function(point) {
+              var marker = L.marker(point);
+              marker.addTo(_var.pointsLayer);
+            });
+          }
+
+          _var.map.fitBounds(_var.dataBounds);
+
           break;
-      }
     }
 
     return _var;
   };
 
   // Exposicao de variaveis globais
-  ['_var','data'].forEach(function (key) {
-
-    // Attach variables to validation function
-    validate[key] = function (_) {
-      if (!arguments.length) {
-        eval('return ' + key);
-      }
-      eval(key + ' = _');
-      return validate;
-    };
-
+  ['_var'].forEach(function (key) {
     // Attach variables to main function
     return main[key] = function (_) {
       if (!arguments.length) {

@@ -3,11 +3,11 @@ html, body {
   margin: 0;
 }
 
-.ember-view {
-  position: relative;
-  top: 50%;
-  transform: translate(0, -50%);
-}
+// .ember-view {
+//   position: relative;
+//   top: 50%;
+//   transform: translate(0, -50%);
+// }
 
 @mixin viz-container($height, $width) {
   display: block;

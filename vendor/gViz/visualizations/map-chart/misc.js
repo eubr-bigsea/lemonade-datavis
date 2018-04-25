@@ -74,9 +74,8 @@ gViz.vis.map.misc = function () {
           // Set margin left and display style
           _var.scaleWrapper.select('.scale-wrapper, .scale-wrapper-full').style('display', 'block');
 
-          var colorHeat = ['blue', 'cyan', 'yellow', 'orange', 'red'];
           d3.select('.scale-rect')
-            .style('background', "linear-gradient(to right," + colorHeat.join(',') + ")");
+            .style('background', "linear-gradient(to right," + _var.heatColors.join(',') + ")");
 
         };
 

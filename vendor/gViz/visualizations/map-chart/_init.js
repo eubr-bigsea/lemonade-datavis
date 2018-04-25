@@ -5,18 +5,12 @@ gViz.vis.map = function () {
   // Auxiliar Functions
   var components = {
     initialize:     gViz.vis.map.initialize,
-    barScale:       gViz.vis.map.barScale,
+    misc:           gViz.vis.map.misc,
     create:         gViz.vis.map.create,
-    elements:       gViz.vis.map.elements,
-    events:         gViz.vis.map.events,
+    tiles:          gViz.vis.map.tiles,
+    renderMap:      gViz.vis.map.renderMap,
     heatLayer:      gViz.vis.map.heatLayer,
     geoJsonLayer:   gViz.vis.map.geoJsonLayer,
-    legend:         gViz.vis.map.legend,
-    renderMap:      gViz.vis.map.renderMap,
-    tiles:          gViz.vis.map.tiles,
-    style:          gViz.vis.map.style,
-    zoom:           gViz.vis.map.zoom,
-    misc:           gViz.vis.map.misc,
   };
 
   // Get attributes values
@@ -34,17 +28,12 @@ gViz.vis.map = function () {
     switch (step) {
       case 'build':         return (container != null) && (d3.selectAll(container).size() !== 0 || d3.select(container).size() !== 0);
       case 'initialize':    return true;
-      case 'barScale':      return data != null && data.data != null;
+      case 'misc':          return data != null && data.data != null;
       case 'create':        return data != null && data.data != null;
-      case 'elements':      return data != null && data.data != null;
+      case 'tiles':         return data != null && data.data != null;
+      case 'renderMap':     return data != null && data.data != null;
       case 'heatLayer':     return data != null && data.data != null;
       case 'geoJsonLayer':  return data != null && data.data != null;
-      case 'renderMap':     return data != null && data.data != null;
-      case 'legend':        return data != null && data.data != null;
-      case 'style':         return true;
-      case 'tiles':         return data != null && data.data != null;
-      case 'zoom':          return data != null && data.data != null;
-      case 'misc':          return data != null && data.data != null;
       default:              return false;
     }
   };
@@ -64,13 +53,8 @@ gViz.vis.map = function () {
           main('create');
           main('tiles');
           main('renderMap');
-          // main('barScale');
-          // main('heatLayer');
+          main('heatLayer');
           // main('geoJsonLayer');
-          // main('create');
-          // main('elements');
-          // main('zoom');
-          // main('legend');
           break;
 
 
@@ -109,32 +93,30 @@ gViz.vis.map = function () {
             .run();
           break;
 
-        // Set bar scale
-        case 'barScale':
-
-          // Set bar scale
-          _var = components.barScale()
-            ._var(_var)
-            .data(_var.data.data == null ? [] : _var.data.data)
-            .run();
-          break;
-
         // Create initial elements
         case 'heatLayer':
 
-          // Creating wrappers
-          _var = components.heatLayer()
+          if(_var.mode === 'heatmap' || _var.mode === 'point')
+          {
+            // Creating wrappers
+            _var = components.heatLayer()
             ._var(_var)
             .run();
+          }
+
           break;
 
         // Create initial elements
         case 'geoJsonLayer':
 
-          // Creating wrappers
-          _var = components.geoJsonLayer()
+          if(_var.mode === 'geojson')
+          {
+            // Creating wrappers
+            _var = components.geoJsonLayer()
             ._var(_var)
             .run();
+          }
+
           break;
 
         // Create initial elements
@@ -143,43 +125,6 @@ gViz.vis.map = function () {
           // Creating wrappers
           _var = components.create()
             ._var(_var)
-            .run();
-          break;
-
-        // Setup elements
-        case 'elements':
-
-          // Creating wrappers
-          _var = components.elements()
-            ._var(_var)
-            .components(components)
-            .run();
-          break;
-
-        // Set style
-        case 'style':
-
-          // Set styling functions
-          _var = components.style()
-            ._var(_var)
-            .run();
-          break;
-
-        case 'zoom':
-
-          // Creating wrappers
-          _var = components.zoom()
-            ._var(_var)
-            .run();
-          break;
-
-        // Show legend
-        case 'legend':
-
-          // Running
-          _var = components.legend()
-            ._var(_var)
-            .components(components)
             .run();
           break;
 
@@ -188,16 +133,6 @@ gViz.vis.map = function () {
 
           // Running
           _var = components.misc()
-            ._var(_var)
-            .components(components)
-            .run();
-          break;
-
-        // Show legend
-        case 'create':
-
-          // Running
-          _var = components.create()
             ._var(_var)
             .components(components)
             .run();
