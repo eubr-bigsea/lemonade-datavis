@@ -19,12 +19,12 @@
     "test": "ember try:each"
   },
   "dependencies": {
+    "leaflet": "^1.0.0",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-cli-sass": "^7.1.7",
     "ember-leaflet": "^3.0.13",
-    "gridstack": "^0.3.0",
-    "jquery-ui-dist": "^1.12.1"
+    "gridstack": "^0.3.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -48,7 +48,7 @@
     "ember-try": "^0.2.23",
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-node": "^5.2.1",
-    "leaflet": "^1.0.0",
+    "jquery-ui-dist": "^1.12.1",
     "loader.js": "^4.2.3"
   },
   "engines": {
