@@ -95,7 +95,7 @@ gViz.vis.map = function () {
         // Create initial elements
         case 'heatLayer':
 
-          if(_var.mode.heatmap || _var.mode.point)
+          if(_var.mode.heatmap || _var.mode.points)
           {
             // Creating wrappers
             _var = components.heatLayer()

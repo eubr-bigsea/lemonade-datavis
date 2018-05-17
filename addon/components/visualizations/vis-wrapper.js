@@ -1,4 +1,3 @@
-/* global gViz */
 import { empty } from '@ember/object/computed';
 import Component from '@ember/component';
 import layout from '../../templates/components/visualizations/vis-wrapper';

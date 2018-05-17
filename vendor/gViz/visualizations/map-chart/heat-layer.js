@@ -101,7 +101,7 @@ gViz.vis.map.heatLayer = function () {
             _var.heatLayer.addLayer(_var.heat);
           }
 
-          else if(_var.mode.point) {
+          else if(_var.mode.points) {
             if(!_var.pointsLayer) {
               _var.pointsLayer = L.featureGroup().addTo(_var.map);
             }
