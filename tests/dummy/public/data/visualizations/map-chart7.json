@@ -1,0 +1,47 @@
+{
+  "job_id": 1411,
+  "task_id": "6c90689e-c1e9-478f-b029-ca6f13771b81",
+  "title": "Habitantes Sudeste",
+  "data": [
+    {
+      "id": "SP",
+      "value": 41262199
+    },
+    {
+      "id": "MG",
+      "value": 19597330
+    },
+    {
+      "id": "RJ",
+      "value": 15989929
+    },
+    {
+      "id": "ES",
+      "value": 3514952
+    }
+  ],
+  "tooltip": {
+    "body": [
+      "<span class='metric'>{{x}}</span><span class='number'>{{y}}</span>"
+    ],
+    "title": [
+      "{{name}}"
+    ]
+  },
+  "mode": {
+    "polygon": true
+  },
+  "geojson": {
+    "url": "http://beta.ctweb.inweb.org.br/publico/Brasil_Estados.p4.simpl.json",
+    "idProperty": "id"
+  },
+  "type": {
+    "icon": "fa-map-marker",
+    "id": 88,
+    "name": "map-chart"
+  },
+  "legend": {
+    "text": "{{name}}",
+    "isVisible": true
+  }
+}
