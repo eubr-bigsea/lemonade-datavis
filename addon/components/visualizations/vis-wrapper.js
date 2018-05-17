@@ -27,9 +27,6 @@ export default Component.extend({
       $("#" + container).addClass("table-overflowing");
     }
 
-    // Update data function
-    self.get('updateData')(self);
-
     // Bind resize
     self.$().resizable({
       start: function() {
@@ -45,30 +42,5 @@ export default Component.extend({
     });
 
   },
-
-  // Update data function
-  updateData: function(self) {
-
-    // Get data from API
-    $.ajax({
-      url: self.get('dataUrl'),
-      type: "GET",
-      beforeSend() { gViz.shared.helpers.loading.show(); },
-      success(json) {
-
-        debugger;
-        self.set('data', json);
-
-      },
-
-      // Hide loading div and render error
-      error(err) { gViz.shared.helpers.loading.hide(); throw err; },
-
-      // Hide loading div and render complete
-      complete() { gViz.shared.helpers.loading.hide(); }
-
-    });
-
-  }
 
 });
