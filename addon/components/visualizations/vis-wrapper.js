@@ -56,6 +56,7 @@ export default Component.extend({
       beforeSend() { gViz.shared.helpers.loading.show(); },
       success(json) {
 
+        debugger;
         self.set('data', json);
 
       },

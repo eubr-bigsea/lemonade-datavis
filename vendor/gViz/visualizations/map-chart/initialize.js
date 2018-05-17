@@ -61,6 +61,14 @@ gViz.vis.map.initialize = function() {
         // Map Mode
         _var.mode = _var.data.mode;
 
+        // parse int
+        if(_var.mode.heatmap || _var.mode.points) {
+          _var.data.data.forEach((point, idx) => {
+            _var.data.data[i]['lat'] = +_var.data.data[i]['lat'];
+            _var.data.data[i]['lon'] = +_var.data.data[i]['lon'];
+          })
+        }
+
         if(_var.mode.polygon === true) {
           _var.heatColors = ['#BD0026', '#E31A1C', '#FC4E2A',
             '#FD8D3C', '#FEB24C', '#FED976'].reverse();
