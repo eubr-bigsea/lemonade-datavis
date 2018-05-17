@@ -1,27 +1,23 @@
 {
-  "job_id": 148,
-  "task_id": "7e7b8d7e-1c98-4978-9f99-4cb18afd4aae",
-  "title": "Teste com Mapa",
+  "job_id": 1411,
+  "task_id": "6c90689e-c1e9-478f-b029-ca6f13771b81",
+  "title": "Habitantes Sudeste",
   "data": [
     {
-      "cor": "green",
-      "id": "MG",
-      "value": 2
-    },
-    {
-      "cor": "red",
       "id": "SP",
-      "value": 1
+      "value": 41262199
     },
     {
-      "cor": "blue",
+      "id": "MG",
+      "value": 19597330
+    },
+    {
       "id": "RJ",
-      "value": 3
+      "value": 15989929
     },
     {
-      "cor": "yellow",
       "id": "ES",
-      "value": 4
+      "value": 3514952
     }
   ],
   "tooltip": {
