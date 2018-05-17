@@ -1,0 +1,47 @@
+{
+  "job_id": 1427,
+  "task_id": "44e3c851-83d5-4234-b808-520865c3ce59",
+  "title": "Result for job 1427",
+  "data": [
+    {
+      "id": "MG",
+      "value": 10
+    },
+    {
+      "id": "SP",
+      "value": 20
+    },
+    {
+      "id": "RJ",
+      "value": 30
+    },
+    {
+      "id": "ES",
+      "value": 40
+    }
+  ],
+  "tooltip": {
+    "body": [
+      "<span class='metric'>{{x}}</span><span class='number'>{{y}}</span>"
+    ],
+    "title": [
+      "{{name}}"
+    ]
+  },
+  "mode": {
+    "polygon": true
+  },
+  "geojson": {
+    "url": "http://beta.ctweb.inweb.org.br/publico/Brasil_Estados.p4.simpl.json",
+    "idProperty": "id"
+  },
+  "type": {
+    "icon": "fa-map-marker",
+    "id": 88,
+    "name": "map-chart"
+  },
+  "legend": {
+    "text": "{{name}}",
+    "isVisible": true
+  }
+}
