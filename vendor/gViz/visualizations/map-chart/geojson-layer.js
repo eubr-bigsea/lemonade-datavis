@@ -65,12 +65,20 @@ gViz.vis.map.geoJsonLayer = function () {
             };
           };
 
+          var tooltip = tooltip || function(layer) {
+            var obj = _var.data.data.find(function(d) { return d.id === layer.feature.properties[_var.data.geojsonProperty]; });
+            if(!obj) { return 'No Data'; }
+            return `<strong>Id:</strong> ${obj.id}<br><strong>Value:</strong> ${obj.value}<br>`
+          };
+
           // Creates layer if it does not exist
           _var.geoJsonLayer = _var.geoJsonLayer ? _var.geoJsonLayer : new L.FeatureGroup().addTo(_var.map);
           _var.geoJsonLayer.clearLayers();
 
           // Appends geojson layer
-          L.geoJson(_var.data.geojson, { style: style }).addTo(_var.geoJsonLayer);
+          L.geoJson(_var.data.geojson, { style: style })
+            .bindTooltip(tooltip)
+          .addTo(_var.geoJsonLayer);
 
           // Fits layer
           _var.map.fitBounds(_var.geoJsonLayer.getBounds());
