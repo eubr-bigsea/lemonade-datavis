@@ -72,11 +72,7 @@ gViz.vis.map.heatLayer = function () {
 
             _var.heatScale.domain(_var.heatBounds);
 
-            // Creates layer if it does not exist
-            if(!_var.heatLayer) {
-              _var.heatLayer = L.featureGroup().addTo(_var.map);
-            }
-
+            _var.heatLayer = L.featureGroup().addTo(_var.map);
             _var.heatLayer.clearLayers();
 
             var gradient = {
@@ -102,12 +98,8 @@ gViz.vis.map.heatLayer = function () {
           }
 
           else if(_var.mode.points) {
-            if(!_var.pointsLayer) {
-              _var.pointsLayer = L.featureGroup().addTo(_var.map);
-            }
-
+            _var.pointsLayer = L.featureGroup().addTo(_var.map);
             _var.pointsLayer.clearLayers();
-
             //var tooltip = _var.data.tooltip ?
 
             _var.data.data.forEach(function(point) {

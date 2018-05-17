@@ -15,12 +15,12 @@ gViz.vis.map.create = function() {
 
         var headerHeight = _var.headerWrapper.node().getBoundingClientRect().height;
 
-        _var.mapWrapper = _var.container.d3.selectAll(".map-wrapper").data(["map-wrapper"]);
+        var className = "map-wrapper-" + _var._id;
+        _var.mapWrapper = _var.container.d3.selectAll("." + className).data(["map-wrapper"]);
         _var.mapWrapper.exit().remove();
-        _var.mapWrapper = _var.mapWrapper.enter().append("div").attr("class", "map-wrapper").merge(_var.mapWrapper);
+        _var.mapWrapper = _var.mapWrapper.enter().append("div").attr("class", className).merge(_var.mapWrapper);
 
         _var.mapWrapper
-          .attr("class", "map-wrapper")
           .style("height", (_var.height - headerHeight) + "px")
           .style("margin-top", _var.margin.top);
 

@@ -21,9 +21,10 @@ gViz.vis.map.misc = function () {
         if(_var.data.legend) { top += 30; }
 
         // Draw title wrapper
-        _var.titleWrapper = _var.headerWrapper.selectAll(".title-wrapper").data(["title-wrapper"]);// svg:g
+        var titleClass = "title-wrapper-" + _var._id;
+        _var.titleWrapper = _var.headerWrapper.selectAll("." + titleClass).data(["title-wrapper"]);// svg:g
         _var.titleWrapper.exit().remove();
-        _var.titleWrapper = _var.titleWrapper.enter().append('div').attr('class', "title-wrapper grid-stack-item-content").merge(_var.titleWrapper);
+        _var.titleWrapper = _var.titleWrapper.enter().append('div').attr('class', titleClass).merge(_var.titleWrapper);
 
         var moveIcon = '<i class="fa fa-arrows"'
         moveIcon += 'style="float: right; margin-top: 3px; cursor: pointer;">';
@@ -48,9 +49,10 @@ gViz.vis.map.misc = function () {
           var hasLegend = _var.data.legend ? _var.data.legend : null;
 
           // Draw legend wrapper
-          _var.legendWrapper = _var.headerWrapper.selectAll(".legend-wrapper").data(hasLegend ? ["legend-wrapper"] : []); // svg:g
+          var legendClass = "legend-wrapper-" + _var._id;
+          _var.legendWrapper = _var.headerWrapper.selectAll("." + legendClass).data(hasLegend ? ["legend-wrapper"] : []); // svg:g
           _var.legendWrapper.exit().remove();
-          _var.legendWrapper = _var.legendWrapper.enter().append('div').attr('class', "legend-wrapper").merge(_var.legendWrapper);
+          _var.legendWrapper = _var.legendWrapper.enter().append('div').attr('class', legendClass).merge(_var.legendWrapper);
 
           _var.legendWrapper
             .style('width', '100%')
@@ -60,19 +62,21 @@ gViz.vis.map.misc = function () {
             .style('padding-left', _var.margin.left + "px")
             .style('padding-top', "10px");
 
-          _var.scaleWrapper = _var.legendWrapper.selectAll(".scale-wrapper").data(["scale-wrapper"]);
+          var scaleClass = "scale-wrapper-" + _var._id;
+          _var.scaleWrapper = _var.legendWrapper.selectAll(".scale-wrapper." + scaleClass).data(["scale-wrapper"]);
           _var.scaleWrapper.exit().remove();
-          _var.scaleWrapper = _var.scaleWrapper.enter().append("div").attr("class", "scale-wrapper").merge(_var.scaleWrapper);
+          _var.scaleWrapper = _var.scaleWrapper.enter().append("div").attr("class", "scale-wrapper " + scaleClass).merge(_var.scaleWrapper);
 
           _var.scaleWrapper
             .each(function(d) {
+              $(this).empty();
               d3.select(this).append("span").attr("class", "legend-left").text("Low");
               d3.select(this).append("svg").attr("class", "scale-rect").attr("width", 100).attr("height", 10);
               d3.select(this).append("span").attr("class", "legend-right").text("High");
             });
 
           // Set margin left and display style
-          _var.scaleWrapper.select('.scale-wrapper, .scale-wrapper-full').style('display', 'block');
+          _var.scaleWrapper.select('.' + scaleClass + ', .scale-wrapper-full').style('display', 'block');
 
           d3.select('.scale-rect')
             .style('background', "linear-gradient(to right," + _var.heatColors.join(',') + ")");

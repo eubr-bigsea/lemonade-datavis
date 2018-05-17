@@ -16,10 +16,28 @@ export default Component.extend({
     // Draw visualization
     this.set('_var',
       gViz.vis.map()
-      ._var(this.get('_var'))
-      .container(`.gViz-wrapper-inner[data-id='${this.get('elementId')}']`)
-      .data(this.get('data'))
-      .build()
+        ._var(this.get('_var'))
+        .container(`.gViz-wrapper-inner[data-id='${this.get('elementId')}']`)
+        .data(this.get('data'))
+        .build()
+    );
+
+    // Draw visualization
+    this.set('_var',
+      gViz.vis.map()
+        ._var(this.get('_var'))
+        .container(`.gViz-wrapper-inner[data-id='${this.get('elementId')}']`)
+        .data(this.get('data'))
+        .build()
+    );
+
+    // Draw visualization
+    this.set('_var',
+      gViz.vis.map()
+        ._var(this.get('_var'))
+        .container(`.gViz-wrapper-inner[data-id='${this.get('elementId')}']`)
+        .data(this.get('data'))
+        .build()
     );
   },
 

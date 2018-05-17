@@ -72,7 +72,7 @@ gViz.vis.map.geoJsonLayer = function () {
           };
 
           // Creates layer if it does not exist
-          _var.geoJsonLayer = _var.geoJsonLayer ? _var.geoJsonLayer : new L.FeatureGroup().addTo(_var.map);
+          _var.geoJsonLayer = new L.FeatureGroup().addTo(_var.map);
           _var.geoJsonLayer.clearLayers();
 
           // Appends geojson layer

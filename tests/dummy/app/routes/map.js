@@ -2,6 +2,8 @@ import Route from '@ember/routing/route';
 import $ from 'jquery';
 
 export default Route.extend({
+  viz: { 'component': 'visualizations/map-chart' },
+
   beforeModel(){
     this._super(...arguments);
     $.ajaxSetup({
