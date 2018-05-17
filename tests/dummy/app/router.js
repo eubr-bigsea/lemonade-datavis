@@ -8,6 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('map');
+  this.route('linechart');
   this.route('dashboard');
 });
 
