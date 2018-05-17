@@ -56,7 +56,7 @@ gViz.vis.map.geoJsonLayer = function () {
           // these won't change. We don't need to reassign them
           var style = style || function(feature) {
             return {
-              fillColor: getColor(feature.properties.id),
+              fillColor: getColor(feature.properties[_var.data.geojsonProperty]),
               weight: 2,
               opacity: 1,
               color: 'black',
