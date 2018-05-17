@@ -61,7 +61,7 @@ export default Component.extend({
       },
 
       // Hide loading div and render error
-      error() { gViz.shared.helpers.loading.hide(); console.error("Error"); },
+      error(err) { gViz.shared.helpers.loading.hide(); throw err; },
 
       // Hide loading div and render complete
       complete() { gViz.shared.helpers.loading.hide(); }

@@ -1,27 +1,23 @@
 {
-  "job_id": 148,
-  "task_id": "7e7b8d7e-1c98-4978-9f99-4cb18afd4aae",
-  "title": "Teste com Mapa",
+  "job_id": 161,
+  "task_id": "4a7115b1-bf0d-4372-869c-275e66e9be89",
+  "title": "Teste Mapa Mundi",
   "data": [
     {
-      "cor": "green",
-      "id": "MG",
-      "value": 2
+      "id": "BR",
+      "value": 200
     },
     {
-      "cor": "red",
-      "id": "SP",
-      "value": 1
+      "id": "US",
+      "value": 300
     },
     {
-      "cor": "blue",
-      "id": "RJ",
-      "value": 3
+      "id": "AR",
+      "value": 100
     },
     {
-      "cor": "yellow",
-      "id": "ES",
-      "value": 4
+      "id": "CL",
+      "value": 150
     }
   ],
   "tooltip": {
@@ -36,8 +32,8 @@
     "polygon": true
   },
   "geojson": {
-    "url": "http://beta.ctweb.inweb.org.br/publico/Brasil_Estados.p4.simpl.json",
-    "idProperty": "id"
+    "url": "http://beta.ctweb.inweb.org.br/publico/countries.geo.json",
+    "idProperty": "iso_a2"
   },
   "type": {
     "icon": "fa-map-marker",

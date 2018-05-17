@@ -51,7 +51,7 @@ export default Component.extend({
         if(body.length === 0) { component.set("isEmpty", true); }
       },
       error: (err) => {
-        console.log(err);
+        throw err;
       },
       complete: () => {
         gViz.helpers.loading.hide();
