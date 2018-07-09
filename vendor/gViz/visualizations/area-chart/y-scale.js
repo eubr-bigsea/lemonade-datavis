@@ -36,10 +36,21 @@ gViz.vis.areaChart.yScale = function () {
 
           // Get bounds
           data.forEach(function(d) {
+            var sum = 0;
             d.values.forEach(function(v) {
               if(min == null || min > +v.y) { min = +v.y; }
               if(max == null || max < +v.y) { max = +v.y; }
+
+              sum += +v.y;
             });
+
+            d.median = sum/d.values.length;
+          });
+
+          data = data.sort(function(a, b) {
+            if(a.median < b.median) { return 1; }
+            if(a.median > b.median) { return -1; }
+            return 0;
           });
 
           // Get axis target
@@ -72,7 +83,7 @@ gViz.vis.areaChart.yScale = function () {
           // Update margin left and width
           if(data.length > 0) {
             _var.width += _var.margin.left;
-            _var.margin.left = 5 + d3.max(_var.yAxis.scale().ticks().map(function(d) { return gViz.shared.helpers.text.getSize(_var.yFormat(d)); }));
+            _var.margin.left = 20 + d3.max(_var.yAxis.scale().ticks().map(function(d) { return gViz.shared.helpers.text.getSize(_var.yFormat(d)); }));
             _var.width -= _var.margin.left;
           }
 

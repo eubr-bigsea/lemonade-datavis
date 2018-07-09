@@ -38,15 +38,56 @@ gViz.vis.areaChart.elements = function () {
           var groups = elements.selectAll(".element-group").data(_data, function(d) { return d.id; });
           groups.exit().remove();
           groups = groups.enter().append("g").attr("class", "element-group").merge(groups);
-          groups.each(function(e) {
+          groups.each(function(g) {
 
-            // Draw Background rect
-            var area = d3.select(this).selectAll(".area").data([e]);
-            area.exit().remove();
-            area = area.enter().append('path').attr("class", "area").merge(area);
-            area
-              .style('fill', function(d) { return d.color; })
-              .attr('d', function(d) { return _var.areaConstructor(d.values); })
+            // Create lines
+            var lines = d3.select(this).selectAll(".line").data([g], function(d) { return d.id; });
+            lines.exit().remove();
+            lines = lines.enter().append("path").attr("class", "line").merge(lines);
+            lines.transition().duration(200)
+              .attr("d", function (d) { return _var.areaConstructor(d.values); })
+              .attr("fill", _var.lineColor)
+              .attr("fill-opacity", 0.75)
+              //.attr("stroke-width", _var.lineWidth)
+              //.attr("stroke-dasharray", _var.lineStyle)
+              //.attr("stroke", _var.lineColor);
+
+            // Create point
+            var points = d3.select(this).selectAll(".point.element").data(g.values);
+            points.exit().remove();
+            points = points.enter().append("path").attr("class", "point element").merge(points);
+            points.transition().duration(200)
+              .attr("d", _var.pointPath)
+              .attr("fill", _var.pointColor)
+
+
+            // Event bindings
+            points.on('mouseover', function(e) {
+
+              // Set hovered node
+              _var.hovered = e;
+
+              // Mouseover event
+              components.events()
+                ._var(_var)
+                .action("mouseover")
+                .components(components)
+                .node(e)
+                .run();
+
+            }).on('mouseout', function(e) {
+
+              // Reset hovered node
+              _var.hovered = null;
+
+              // Mouseout event
+              components.events()
+                ._var(_var)
+                .action("mouseout")
+                .components(components)
+                .run();
+
+            });
 
           });
 
@@ -55,12 +96,6 @@ gViz.vis.areaChart.elements = function () {
           bg_rect.exit().remove();
           bg_rect = bg_rect.enter().insert('rect', ':first-child').attr("class", "bg-rect").style('fill', 'transparent').merge(bg_rect);
           bg_rect.style('fill', 'transparent').attr("x", 0).attr('y', 0).attr('width', _var.width).attr("height", _var.height);
-
-          // Draw Background rect
-          var bgRectStroke = _var.g.selectAll("rect.bg-rect-stroke").data(["bg-rect-stroke"]);
-          bgRectStroke.exit().remove();
-          bgRectStroke = bgRectStroke.enter().insert('rect', ':first-child').attr("class", "bg-rect-stroke").merge(bgRectStroke);
-          bgRectStroke.style('fill', 'transparent').attr("x", 0).attr('y', 0).attr('width', _var.width).attr("height", _var.height);
 
           break;
       }

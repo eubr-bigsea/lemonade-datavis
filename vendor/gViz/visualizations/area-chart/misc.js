@@ -32,7 +32,7 @@ gViz.vis.areaChart.misc = function () {
           if(_var.data.legend != null && _var.data.legend.isVisible != null && _var.data.legend.isVisible === true) { top += 30; }
 
           // Update container
-          _var.container.d3.selectAll('.grid-background, .area-chart').style('top', top + 'px')
+          _var.container.d3.selectAll('.grid-background, .line-chart').style('top', top + 'px')
 
           // Has title flag
           var hasTitle = _var.data.title != null && _var.data.title !== "";
@@ -42,10 +42,10 @@ gViz.vis.areaChart.misc = function () {
           titleWrapper.exit().remove();
           titleWrapper = titleWrapper.enter().append('div').attr('class', "title-wrapper").merge(titleWrapper);
           titleWrapper
-            .style('width', '100%')
             .style('height', '30px')
-            .style('margin', '0px 0px 5px 0px')
-            .style('padding', '6px 10px 5px')
+            .style('padding-left', '10px')
+            .style('display', 'flex')
+            .style('align-items', 'center')
             .style('oveflow', 'hidden')
             .style('white-space', 'nowrap')
             .style('text-overflow', 'ellipsis')
@@ -63,11 +63,12 @@ gViz.vis.areaChart.misc = function () {
           legendWrapper.exit().remove();
           legendWrapper = legendWrapper.enter().append('div').attr('class', "legend-wrapper").merge(legendWrapper);
           legendWrapper
-            .style('width', '100%')
             .style('height', '30px')
             .style('oveflow-y', 'hidden')
             .style('oveflow-x', 'auto')
             .style('padding-left', _var.margin.left + "px")
+            .style('display', 'flex')
+            .style('align-items', 'center')
             .each(function(d) {
 
               // Draw legend wrapper
@@ -76,7 +77,6 @@ gViz.vis.areaChart.misc = function () {
               innerWrapper = innerWrapper.enter().append('div').attr('class', "legend-inner").merge(innerWrapper);
               innerWrapper
                 .style('width', 'auto')
-                .style('height', '100%')
                 .style('white-space', 'nowrap')
 
             });

@@ -10,7 +10,7 @@ gViz.vis.areaChart.initialize = function () {
   var colors = { main: gViz.shared.helpers.colors.main, aux: gViz.shared.helpers.colors.aux };
   var data      = [];
   var height    = null;
-  var margin    = { top: 10, right: 10, bottom: 10, left: 10 };
+  var margin = { top: 10, right: 10, bottom: 35, left: 50 };
   var width     = null;
 
   // Validate attributes
@@ -62,7 +62,7 @@ gViz.vis.areaChart.initialize = function () {
           _var.width = ((width != null) ? width : _var.container.clientRect.width) - (_var.margin.left + _var.margin.right);
 
           // Update height based on title
-          if(_var.data.title != null && _var.data.title !== "") { _var.height -= 35; }
+          if(_var.data.title != null && _var.data.title !== "") { _var.height -= 30; }
           if(_var.data.legend != null && _var.data.legend.isVisible != null && _var.data.legend.isVisible === true) { _var.height -= 30; }
 
           // Set attribute _id to container and update container
@@ -75,11 +75,11 @@ gViz.vis.areaChart.initialize = function () {
             _var.container.d3.selectAll("h5").remove();
           }
 
-          // Initialize area constructor
+          // Initialize line constructor
           _var.areaConstructor = d3.area()
-            .x(function (d) { return _var.x(d._x); })
+            .x(function (d) { return _var.x(d.parsedX) + (_var.xIsDate || _var.xIsNumber ? 0 : _var.x.bandwidth()/2) ; })
             .y0(_var.height)
-            .y1(function (d) { return _var.y(d._y); })
+            .y1(function (d) { return _var.y(+d.y); })
             .curve(d3.curveMonotoneX);
 
           break;

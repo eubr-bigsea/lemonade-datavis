@@ -29,7 +29,7 @@ gViz.vis.areaChart.create = function () {
           // Draw svg
           _var.wrap = _var.container.d3.selectAll(`svg.chart-${_var._id}`).data(["chart-svg"]);
           _var.wrap.exit().remove();
-          _var.wrap = _var.wrap.enter().append("svg").attr('class', `line-graph area-chart chart-${_var._id}`).merge(_var.wrap); // svg
+          _var.wrap = _var.wrap.enter().append("svg").attr('class', `area-graph area-chart chart-${_var._id}`).merge(_var.wrap); // svg
 
           // Update outer dimensions
           _var.wrap
@@ -40,7 +40,7 @@ gViz.vis.areaChart.create = function () {
           _var.g = _var.wrap.selectAll("g.chart-wrap").data(["chart-wrap"]); // svg:g
           _var.g.exit().remove();
           _var.g = _var.g.enter().append('g').attr('class', "chart-wrap").merge(_var.g);
-          _var.g.attr("transform", `translate(${_var.margin.left},${_var.margin.top})`);
+          _var.g.attr("transform", `translate(${_var.margin.left}, ${_var.margin.top})`);
 
           // Draw shadow
           gViz.shared.visualComponents.shadow()
