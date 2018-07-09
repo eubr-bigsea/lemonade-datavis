@@ -38,6 +38,10 @@ gViz.vis.map.initialize = function() {
         _var.height = _var.container.clientRect.height;
         _var.width = _var.container.clientRect.width;
 
+        // Update height based on title
+        //if(_var.data.title != null && _var.data.title !== "") { _var.height -= 30; }
+        //if(_var.data.legend != null) { _var.height -= 40; }
+
         // Set attribute _id to container
         _var.container.d3.attr('data-vis-id', _var._id);
 

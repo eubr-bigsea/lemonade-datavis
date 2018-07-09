@@ -41,14 +41,23 @@ gViz.vis.scatterPlot = function () {
         // Build entire visualizations
         case 'build':
 
-          main('initialize');
-          main('yScale');
-          main('xScale');
-          main('zScale');
-          main('create');
-          main('axis');
-          main('elements');
-          main('misc');
+          try {
+            main('initialize');
+            main('yScale');
+            main('xScale');
+            main('zScale');
+            main('create');
+            main('axis');
+            main('elements');
+            main('misc');
+          }
+
+          catch(err) {
+            console.log(err);
+            d3.select(container)
+              .style('padding-left', '20px')
+              .html('<h5>An error has occurred while rendering the visualization. Check console for more information</h5>');
+          }
           break;
 
         // Initialize visualization variable

@@ -47,13 +47,22 @@ gViz.vis.map = function () {
 
         // Build entire visualizations
         case 'build':
-          main('initialize');
-          main('misc');
-          main('create');
-          main('tiles');
-          main('renderMap');
-          main('heatLayer');
-          main('geoJsonLayer');
+          try {
+            main('initialize');
+            main('misc');
+            main('create');
+            main('tiles');
+            main('renderMap');
+            main('heatLayer');
+            main('geoJsonLayer');
+          }
+
+          catch(err) {
+            console.log(err);
+            d3.select(container)
+              .style('padding-left', '20px')
+              .html('<h5>An error has occurred while rendering the visualization. Check console for more information</h5>');
+          }
           break;
 
 

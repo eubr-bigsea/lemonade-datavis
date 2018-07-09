@@ -75,7 +75,8 @@ gViz.vis.areaChart.elements = function () {
                 .node(e)
                 .run();
 
-            }).on('mouseout', function(e) {
+            })
+            .on('mouseout', function(e) {
 
               // Reset hovered node
               _var.hovered = null;

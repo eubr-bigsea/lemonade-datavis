@@ -42,11 +42,11 @@ gViz.vis.donutChart.misc = function () {
           titleWrapper.exit().remove();
           titleWrapper = titleWrapper.enter().append('div').attr('class', "title-wrapper").merge(titleWrapper);
           titleWrapper
-            .style('width', '100%')
             .style('height', '30px')
-            .style('margin', '0px 0px 5px 0px')
-            .style('padding', '6px 10px 5px')
-            .style('oveflow', 'hidden')
+            .style('padding-left', '10px')
+            .style('display', 'flex')
+            .style('align-items', 'center')
+            .style('overflow', 'hidden')
             .style('white-space', 'nowrap')
             .style('text-overflow', 'ellipsis')
             .style('background-color', '#eee')
@@ -63,11 +63,13 @@ gViz.vis.donutChart.misc = function () {
           legendWrapper.exit().remove();
           legendWrapper = legendWrapper.enter().append('div').attr('class', "legend-wrapper").merge(legendWrapper);
           legendWrapper
-            .style('width', '100%')
             .style('height', '30px')
-            .style('oveflow-y', 'hidden')
-            .style('oveflow-x', 'auto')
+            .style('overflow-y', 'hidden')
+            .style('overflow-x', 'auto')
             .style('padding-left', _var.margin.left + "px")
+            .style('padding-bottom', "5px")
+            .style('display', 'flex')
+            .style('align-items', 'center')
             .each(function(d) {
 
               // Draw legend wrapper

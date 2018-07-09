@@ -31,13 +31,16 @@ gViz.vis.map.misc = function () {
         moveIcon += '</i>';
 
         _var.titleWrapper
-          .style('padding', '10px 10px 10px')
-          .style('oveflow', 'hidden')
-          .style('white-space', 'nowrap')
-          .style('text-overflow', 'ellipsis')
-          .style('background-color', '#eee')
-          .style('color', '#666')
-          .style('font-size', '12px')
+            .style('height', '30px')
+            .style('padding-left', '10px')
+            .style('display', 'flex')
+            .style('align-items', 'center')
+            .style('overflow', 'hidden')
+            .style('white-space', 'nowrap')
+            .style('text-overflow', 'ellipsis')
+            .style('background-color', '#eee')
+            .style('color', '#666')
+            .style('font-size', '12px')
           .html(function() {
             if(_var.data.title) { return _var.data.title + moveIcon; }
             else return moveIcon;
@@ -55,12 +58,14 @@ gViz.vis.map.misc = function () {
           _var.legendWrapper = _var.legendWrapper.enter().append('div').attr('class', legendClass).merge(_var.legendWrapper);
 
           _var.legendWrapper
-            .style('width', '100%')
+            .style('margin-top', '5px')
             .style('height', '30px')
-            .style('oveflow-y', 'hidden')
-            .style('oveflow-x', 'auto')
+            .style('overflow-y', 'hidden')
+            .style('overflow-x', 'auto')
             .style('padding-left', _var.margin.left + "px")
-            .style('padding-top', "10px");
+            .style('padding-bottom', "5px")
+            .style('display', 'flex')
+            .style('align-items', 'center')
 
           var scaleClass = "scale-wrapper-" + _var._id;
           _var.scaleWrapper = _var.legendWrapper.selectAll(".scale-wrapper." + scaleClass).data(["scale-wrapper"]);

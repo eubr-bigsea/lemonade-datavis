@@ -10,6 +10,10 @@ Router.map(function() {
   this.route('map');
   this.route('linechart');
   this.route('areachart');
+  this.route('donutchart');
+  this.route('piechart');
+  this.route('scatterplot');
+  this.route('barchart');
   this.route('dashboard');
 });
 

@@ -46,7 +46,7 @@ gViz.vis.areaChart.misc = function () {
             .style('padding-left', '10px')
             .style('display', 'flex')
             .style('align-items', 'center')
-            .style('oveflow', 'hidden')
+            .style('overflow', 'hidden')
             .style('white-space', 'nowrap')
             .style('text-overflow', 'ellipsis')
             .style('background-color', '#eee')
@@ -63,10 +63,12 @@ gViz.vis.areaChart.misc = function () {
           legendWrapper.exit().remove();
           legendWrapper = legendWrapper.enter().append('div').attr('class', "legend-wrapper").merge(legendWrapper);
           legendWrapper
+            .style('margin-top', '5px')
             .style('height', '30px')
-            .style('oveflow-y', 'hidden')
-            .style('oveflow-x', 'auto')
+            .style('overflow-y', 'hidden')
+            .style('overflow-x', 'auto')
             .style('padding-left', _var.margin.left + "px")
+            .style('padding-bottom', "5px")
             .style('display', 'flex')
             .style('align-items', 'center')
             .each(function(d) {
