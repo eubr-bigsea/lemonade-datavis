@@ -44,40 +44,10 @@ export default Component.extend({
 
   // Initialize data
   didInsertElement() {
-
     // Store this
     var self = this;
 
     // Set resizeIndex
     self.set('viz.resizeIndex', 0);
-
-    // Update data function
-    self.get('updateData')(self);
-
   },
-
-  // Update data function
-  updateData: function(self) {
-
-    // Get data from API
-    $.ajax({
-      url: self.get('dataUrl'),
-      type: "GET",
-      beforeSend() { gViz.shared.helpers.loading.show(); },
-      success(json) {
-
-        self.set('data', json);
-
-      },
-
-      // Hide loading div and render error
-      error(err) { gViz.shared.helpers.loading.hide(); throw err; },
-
-      // Hide loading div and render complete
-      complete() { gViz.shared.helpers.loading.hide(); }
-
-    });
-
-  }
-
 });

@@ -12,47 +12,10 @@ export default Component.extend({
 
   // Initialize data
   isEmpty: empty('visualizations'),
-  visualizations: computed('model', function() {
-
-    // Store this
-    var self = this;
-
-    // Iterate over visualizations to update parameters
-    self.get('model.visualizations').forEach(v => {
-
-      // Set data url
-      v.dataUrl = [
-        this.get('caipirinhaUrl'),
-        "visualizations",
-        v.job_id,
-        v.task_id
-      ].join('/');
-
-      // Set component name for data visualization
-      v.component = ['visualizations',v.type.name].join('/').replace('bar-chart', 'vertical-bar-chart');
-
-      // Get configuration
-      var conf = self.get('model.configuration') == null ? {} : self.get('model.configuration');
-      var item = conf[`${v.id}`] == null ? {} : conf[`${v.id}`];
-
-      // Set initial style and layouts
-      v.x = item.x == null || isNaN(+item.x) ? 0 : +item.x;
-      v.y = item.y == null || isNaN(+item.y) ? 0 : +item.y;
-      v.width = item.width == null || isNaN(+item.width) ? 4 : +item.width;
-      v.height = item.height == null || isNaN(+item.height) ? 4 : +item.height;
-      v.height = v.height < 4 ? 4 : v.height;
-
-    });
-
-    return self.get('model.visualizations');
-
-  }),
 
   // After insert elements
   didInsertElement() {
-
-    // Store this
-    var self = this;
+    const self = this;
 
     // Initialize gridstack
     self.set('gs', self.$('.grid-stack').gridstack({
@@ -90,10 +53,10 @@ export default Component.extend({
 
     });
 
+    console.log(this.get('visualizations'));
   },
 
   actions: {
-
     save() {
 
       // Store this
@@ -131,7 +94,5 @@ export default Component.extend({
       self.get('model').save();
 
     }
-
   }
-
 });

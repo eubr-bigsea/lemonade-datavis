@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import $ from 'jquery';
 
 export default Route.extend({
-  beforeModel(){
+  beforeModel (){
     this._super(...arguments);
     $.ajaxSetup({
       headers: {
@@ -11,13 +11,18 @@ export default Route.extend({
     });
   },
 
-  model(params){
-    const id = params.id ? params.id : 47;
-    return $.ajax({
-    //url: 'https://teste.ctweb.inweb.org.br/caipirinha/dashboards/47',
-      url: `https://teste.ctweb.inweb.org.br/caipirinha/dashboards/${id}`,
-      type: 'GET'
+  model: async function(params) {
+    const path = '/data/dashboards';
+    const dataUrl = params['data'] ? `${path}/${params['data']}` : `${path}/dash1.json`;
+
+    const model = await $.get({
+      url: dataUrl,
+      error(err) {
+        throw err;
+      }
     });
+
+    return model;
   },
 })
 

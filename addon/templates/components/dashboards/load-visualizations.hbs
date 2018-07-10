@@ -8,13 +8,17 @@
     </button>
   </div>
 </div>
+
 <div class="col-12 grid-stack-wrapper">
   <div class="grid-stack">
     {{#if isEmpty}}
       Loading data...
     {{else }}
       {{#each visualizations as |viz|}}
-        {{dashboards/vis-wrapper viz=viz dataUrl=viz.dataUrl}}
+        {{dashboards/vis-wrapper
+          viz=viz
+          data=viz.data
+        }}
       {{/each }}
     {{/if}}
   </div>
