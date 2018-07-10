@@ -52,8 +52,6 @@ export default Component.extend({
       self.$(element).removeClass('hovering').css('opacity', 1);
 
     });
-
-    console.log(this.get('visualizations'));
   },
 
   actions: {
