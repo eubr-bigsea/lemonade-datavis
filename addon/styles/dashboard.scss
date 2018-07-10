@@ -412,6 +412,14 @@
   }
 }
 
-.grid-stack > .grid-stack-item > .grid-stack-item-content {
-  overflow-y: hidden;
+.grid-stack {
+  > .grid-stack-item {
+    > .grid-stack-item-content {
+      overflow-y: hidden;
+    }
+
+    > .ui-resizable-handle {
+      z-index: 10000 !important;
+    }
+  }
 }
