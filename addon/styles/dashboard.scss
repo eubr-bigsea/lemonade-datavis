@@ -411,3 +411,7 @@
     font-size: 0.9vw;
   }
 }
+
+.grid-stack > .grid-stack-item > .grid-stack-item-content {
+  overflow-y: hidden;
+}

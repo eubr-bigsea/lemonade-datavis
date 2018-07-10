@@ -11,9 +11,11 @@ export default Route.extend({
     });
   },
 
-  model(){
+  model(params){
+    const id = params.id ? params.id : 47;
     return $.ajax({
-      url: 'https://teste.ctweb.inweb.org.br/caipirinha/dashboards/47',
+    //url: 'https://teste.ctweb.inweb.org.br/caipirinha/dashboards/47',
+      url: `https://teste.ctweb.inweb.org.br/caipirinha/dashboards/${id}`,
       type: 'GET'
     });
   },

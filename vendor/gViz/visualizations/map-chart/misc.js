@@ -75,16 +75,26 @@ gViz.vis.map.misc = function () {
           _var.scaleWrapper
             .each(function(d) {
               $(this).empty();
-              d3.select(this).append("span").attr("class", "legend-left").text("Low");
-              d3.select(this).append("svg").attr("class", "scale-rect").attr("width", 100).attr("height", 10);
-              d3.select(this).append("span").attr("class", "legend-right").text("High");
+
+              d3.select(this)
+                .append("span")
+                .attr("class", "legend-left")
+                .text("Low");
+
+              d3.select(this)
+                .append("svg")
+                .attr("class", "scale-rect")
+                .attr("width", 100)
+                .attr("height", 10)
+                .style('background', "linear-gradient(to right," + _var.heatColors.join(',') + ")");;
+              d3.select(this)
+                .append("span")
+                .attr("class", "legend-right")
+                .text("High");
             });
 
           // Set margin left and display style
           _var.scaleWrapper.select('.' + scaleClass + ', .scale-wrapper-full').style('display', 'block');
-
-          d3.select('.scale-rect')
-            .style('background', "linear-gradient(to right," + _var.heatColors.join(',') + ")");
 
         };
 

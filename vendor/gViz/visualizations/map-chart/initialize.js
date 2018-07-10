@@ -47,7 +47,7 @@ gViz.vis.map.initialize = function() {
 
         _var.headerWrapper = _var.container.d3.selectAll(".header-wrapper").data(["header-wrapper"]);
         _var.headerWrapper.exit().remove();
-        _var.headerWrapper = _var.headerWrapper.enter().append("div").attr("class", "header-wrapper").merge(_var.headerWrapper);
+        _var.headerWrapper = _var.headerWrapper.enter().append("div").attr("class", "header-wrapper grid-stack-item-content ui-draggable-handle").merge(_var.headerWrapper);
 
 
         // NO DATA AVAILABLE
