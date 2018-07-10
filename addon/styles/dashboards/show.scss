@@ -35,6 +35,7 @@
     }
   }
   .gViz-dashboard-wrapper {
+    min-height: 300px;
 
     .gViz-wrapper-inner {
       border: 1px solid transparent;
@@ -48,6 +49,8 @@
       box-shadow: none !important;
 
       .gViz-wrapper-inner {
+        position: relative;
+        height: 100%;
         z-index: 1010;
         border: 1px solid #dedede;
         -webkit-box-shadow: -5px 5px 5px 0px rgba(190,190,190,1);

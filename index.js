@@ -50,7 +50,6 @@ module.exports = {
     app.import("vendor/gViz/visualizations/area-chart/events.js");
     app.import("vendor/gViz/visualizations/area-chart/style.js");
     app.import("vendor/gViz/visualizations/area-chart/misc.js");
-    app.import("vendor/gViz/visualizations/area-chart/parse.js");
     app.import("vendor/gViz/visualizations/line-chart/_init.js");
     app.import("vendor/gViz/visualizations/line-chart/initialize.js");
     app.import("vendor/gViz/visualizations/line-chart/create.js");

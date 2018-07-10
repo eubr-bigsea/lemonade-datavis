@@ -90,7 +90,7 @@ gViz.vis.verticalBarChart.yScale = function () {
 
           // Update margin left and width
           _var.width += _var.margin.left;
-          _var.margin.left = 5 + d3.max(_var.yAxis.scale().ticks().map(function(d) { return gViz.shared.helpers.text.getSize(_var.yFormat(d)); }));
+          _var.margin.left = 20 + d3.max(_var.yAxis.scale().ticks().map(function(d) { return gViz.shared.helpers.text.getSize(_var.yFormat(d)); }));
           _var.width -= _var.margin.left;
 
           break;

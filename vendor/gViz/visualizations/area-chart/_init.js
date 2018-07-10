@@ -11,14 +11,13 @@ gViz.vis.areaChart = function () {
   var colors = { main: gViz.shared.helpers.colors.main };
   var data = [];
   var height = null;
-  var margin = { top: 10, right: 10, bottom: 35, left: 0 };
+  var margin = { top: 10, right: 10, bottom: 35, left: 50 };
   var width = null;
 
   // Validate attributes
   var validate = function (step) {
     switch (step) {
       case 'build':      return (container != null) && (d3.selectAll(container).size() !== 0 || d3.select(container).size() !== 0);
-      case 'parse':      return true;
       case 'initialize': return true;
       case 'axis':       return data != null && data.data != null && data.data.length > 0;
       case 'create':     return data != null && data.data != null && data.data.length > 0;
@@ -42,15 +41,24 @@ gViz.vis.areaChart = function () {
         // Build entire visualizations
         case 'build':
 
-          main('initialize');
-          main('parse');
-          main('style');
-          main('yScale');
-          main('xScale');
-          main('create');
-          main('axis');
-          main('elements');
-          main('misc');
+          try {
+            main('initialize');
+            main('style');
+            main('misc');
+            main('yScale');
+            main('xScale');
+            main('create');
+            main('axis');
+            main('elements');
+          }
+
+          catch(err) {
+            console.log(err);
+            d3.select(container)
+              .style('padding-left', '20px')
+              .html('<h5>An error has occurred while rendering the visualization. Check console for more information</h5>');
+          }
+
           break;
 
         // Initialize visualization variable
@@ -68,15 +76,6 @@ gViz.vis.areaChart = function () {
             .height(height)
             .margin(margin)
             .width(width)
-            .run();
-          break;
-
-        // Parse data elements
-        case 'parse':
-
-          // Creating wrappers
-          _var = gViz.vis.areaChart.parse()
-            ._var(_var)
             .run();
           break;
 

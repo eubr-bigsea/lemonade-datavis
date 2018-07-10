@@ -22,7 +22,8 @@ gViz.vis.map.create = function() {
 
         _var.mapWrapper
           .style("height", (_var.height - headerHeight) + "px")
-          .style("margin-top", _var.margin.top);
+          .style("margin-top", _var.margin.top)
+          .style('z-index', 0);
 
         break;
 

@@ -39,7 +39,8 @@ export default Component.extend({
       v.x = item.x == null || isNaN(+item.x) ? 0 : +item.x;
       v.y = item.y == null || isNaN(+item.y) ? 0 : +item.y;
       v.width = item.width == null || isNaN(+item.width) ? 4 : +item.width;
-      v.height = item.height == null || isNaN(+item.height) ? 3 : +item.height;
+      v.height = item.height == null || isNaN(+item.height) ? 4 : +item.height;
+      v.height = v.height < 4 ? 4 : v.height;
 
     });
 

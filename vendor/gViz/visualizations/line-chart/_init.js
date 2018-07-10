@@ -11,7 +11,7 @@ gViz.vis.lineChart = function () {
   var colors = { main: gViz.shared.helpers.colors.main };
   var data = [];
   var height = null;
-  var margin = { top: 10, right: 10, bottom: 35, left: 0 };
+  var margin = { top: 10, right: 10, bottom: 35, left: 15 };
   var width = null;
 
   // Validate attributes
@@ -41,14 +41,24 @@ gViz.vis.lineChart = function () {
         // Build entire visualizations
         case 'build':
 
-          main('initialize');
-          main('style');
-          main('yScale');
-          main('xScale');
-          main('create');
-          main('axis');
-          main('elements');
-          main('misc');
+          try {
+            main('initialize');
+            main('style');
+            main('misc');
+            main('yScale');
+            main('xScale');
+            main('create');
+            main('axis');
+            main('elements');
+          }
+
+          catch(err) {
+            console.log(err);
+            d3.select(container)
+              .style('padding-left', '20px')
+              .html('<h5>An error has occurred while rendering the visualization. Check console for more information</h5>');
+          }
+
           break;
 
         // Initialize visualization variable
