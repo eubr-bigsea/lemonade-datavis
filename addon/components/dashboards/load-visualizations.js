@@ -56,14 +56,12 @@ export default Component.extend({
 
   actions: {
     save() {
-
       // Store this
       var self = this;
       var conf = {};
 
       // Initialize items
       self.$('.grid-stack-item.ui-draggable').each(function () {
-
         // Get node
         var node = self.$(this).data('_gridstack_node');
 
@@ -82,15 +80,15 @@ export default Component.extend({
           width: node.width,
           height: node.height
         };
-
       });
+
+      console.log(self.get('model'));
 
       // Set model configuration
       self.set('model.configuration', conf);
 
       // Save the configuration on dashboard
-      self.get('model').save();
-
+      self.get('model').save(self.get('model'));
     }
   }
 });
