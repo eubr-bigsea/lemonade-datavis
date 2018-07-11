@@ -82,8 +82,6 @@ export default Component.extend({
         };
       });
 
-      console.log(self.get('model'));
-
       // Set model configuration
       self.set('model.configuration', conf);
 
