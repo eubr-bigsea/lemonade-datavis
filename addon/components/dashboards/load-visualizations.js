@@ -11,7 +11,7 @@ export default Component.extend({
   classNames: ["gViz-dashboard-canvas"],
 
   // Initialize data
-  isEmpty: empty('visualizations'),
+  isEmpty: empty('model.visualizations'),
 
   // After insert elements
   didInsertElement() {
@@ -40,10 +40,10 @@ export default Component.extend({
       var dataVizId = self.$(element).attr('data-viz-id');
 
       // Get visualization and increment resizeIndex property
-      var index = self.get('visualizations').map((d,i) => { return { index: i, id: `${d.id}` } }).find(d => `${d.id}` === `${dataVizId}`).index;
+      var index = self.get('model.visualizations').map((d,i) => { return { index: i, id: `${d.id}` } }).find(d => `${d.id}` === `${dataVizId}`).index;
 
       // Get obj
-      var obj = self.get(`visualizations.${index}`);
+      var obj = self.get(`model.visualizations.${index}`);
 
       // Update property
       set(obj, 'resizeIndex', obj.resizeIndex+1);

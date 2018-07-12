@@ -14,7 +14,7 @@
     {{#if isEmpty}}
       Loading data...
     {{else }}
-      {{#each visualizations as |viz|}}
+      {{#each model.visualizations as |viz|}}
         {{dashboards/vis-wrapper
           viz=viz
           data=viz.data
