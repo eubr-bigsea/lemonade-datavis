@@ -56,37 +56,7 @@ export default Component.extend({
 
   actions: {
     save() {
-      // Store this
-      var self = this;
-      var conf = {};
-
-      // Initialize items
-      self.$('.grid-stack-item.ui-draggable').each(function () {
-        // Get node
-        var node = self.$(this).data('_gridstack_node');
-
-        // Get attrs
-        var vizId  = self.$(this).attr('data-viz-id');
-        var taskId = self.$(this).attr('data-viz-task-id');
-        var jobId  = self.$(this).attr('data-viz-job-id');
-
-        // Save node to items
-        conf[`${vizId}`] = {
-          vizId: vizId,
-          taskId: taskId,
-          jobId: jobId,
-          x: node.x,
-          y: node.y,
-          width: node.width,
-          height: node.height
-        };
-      });
-
-      // Set model configuration
-      self.set('model.configuration', conf);
-
-      // Save the configuration on dashboard
-      self.get('model').save();
+      this.get('save')(this);
     }
   }
 });
