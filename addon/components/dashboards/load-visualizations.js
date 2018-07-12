@@ -86,7 +86,7 @@ export default Component.extend({
       self.set('model.configuration', conf);
 
       // Save the configuration on dashboard
-      self.get('model').save(self.get('model'));
+      self.get('model').save();
     }
   }
 });
