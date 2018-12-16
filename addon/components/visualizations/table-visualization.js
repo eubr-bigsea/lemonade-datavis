@@ -10,7 +10,6 @@ import $ from 'jquery';
 
 export default Component.extend({
   layout,
-  session: service(),
 
   init() {
     this._super(...arguments);
@@ -59,6 +58,10 @@ export default Component.extend({
   searchChanged: observer('searchIndex', 'sortBy','sortOrder', function() {
     scheduleOnce('afterRender', this, 'draw', 'none');
   }),
+
+  didInsertElement() {
+    console.log(this.get('data'))
+  },
 
   actions: {
 

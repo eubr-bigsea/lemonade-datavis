@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('map');
   this.route('linechart');
+  this.route('table');
   this.route('areachart');
   this.route('donutchart');
   this.route('piechart');
